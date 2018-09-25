@@ -18,7 +18,8 @@ cc.Class({
         lblExpress: cc.Label,
         spTime: cc.Sprite,
         lblScore: cc.Label,
-        lblCounting: cc.Label
+        lblCounting: cc.Label,
+        _startFlag: false
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -27,6 +28,7 @@ cc.Class({
         this.time = this.allTime = 10;
         this.init(); //初始化
         this.countingTime();
+        this._startFlag = false;
     },
 
     start() {
@@ -46,6 +48,7 @@ cc.Class({
     },
 
     onBtnClick(e) {
+        if (!this._startFlag) return;
         let num = parseInt(e.target.name.split('btnNum')[1]);
         this.click++;
         this.lblNum3.string = this.lblNum3.string + num;
@@ -150,8 +153,7 @@ cc.Class({
         this.lblCounting.node.runAction(cc.sequence(cc.fadeIn(0.5), cc.fadeOut(0.5)));
         cc.mig.audioMgr.playSound('timer');
         if (this.counting <= 0) {
-            cc.log('1');
-
+            this._startFlag = true;
             this.lblCounting.string = '开始';
             this.lblCounting.node.runAction(cc.sequence(cc.fadeIn(0.5), cc.fadeOut(0.5)));
             this.startGame();

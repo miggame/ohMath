@@ -36,6 +36,7 @@ cc.Class({
         cc.mig = {};
         cc.mig.main = this;
         cc.mig.utils = new Utils();
+        cc.mig.utils.initAd(); //初始化广告
         cc.mig.audioMgr = new AudioMgr();
 
         //初始化

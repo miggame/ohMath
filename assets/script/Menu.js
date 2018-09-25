@@ -48,7 +48,9 @@ cc.Class({
                 cc.mig.main.setGameState(1);
                 this.close();
                 break;
-
+            case 'rankButton':
+                cc.mig.utils.showAd();
+                break;
             default:
                 break;
         }

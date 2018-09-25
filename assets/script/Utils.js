@@ -52,5 +52,24 @@ cc.Class({
                 cb(newNode);
             }
         });
+    },
+
+    //mobvista ad
+    initAd() { //初始化广告配置
+        if (window.Vijs) {
+            window.myAd57340 = Vijs.setAD({
+                unitid: 57340,
+                loadedCallback: function () {
+                    console.log('load success');
+                },
+                rewardedCallback: function (reward_name, reward_amount) {
+                    console.log(reward_amount);
+                }
+            });
+        }
+    },
+
+    showAd() { //展示广告
+        window.myAd57340 && window.myAd57340.show();
     }
 });
